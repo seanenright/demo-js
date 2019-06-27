@@ -44,6 +44,7 @@ describe ('headless firefox test', function() {
         await driver.get(appURL);
         const title = await driver.getTitle();
         console.log('Page Title is: ' + title);
+        console.log(`SauceOnDemandSessionID=${driver.sessionID} job-name=headless firefox test`)
         expect(title).equals('Swag Labs');
     });
 });

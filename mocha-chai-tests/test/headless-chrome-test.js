@@ -45,6 +45,7 @@ describe ('headless chrome test', function() {
         await driver.get(appURL);
         const title = await driver.getTitle();
         console.log('Page Title is: ' + title);
+        console.log(`SauceOnDemandSessionID=${driver.sessionID} job-name=headless chrome test`)
         expect(title).equals('Swag Labs');
     });
 });
