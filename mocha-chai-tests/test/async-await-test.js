@@ -16,19 +16,18 @@ describe ('async/await tests', function() {
     beforeEach(async function () {
         driver = await new webdriver.Builder().withCapabilities({
             'browserName': 'chrome',
-            'platformName': 'linux',
+            // 'platformName': 'linux',
             'browserVersion': 'latest',
             'goog:chromeOptions' : { 'w3c' : true },
             'sauce:options': {
                 'username': username,
                 'accessKey': accessKey,
-                'seleniumVersion': '3.141.59',
-                'build': 'JS-Async/Await-Tests',
-                'name': 'js-async/await: ' + this.currentTest.title,
+                'build': 'new',
+                'name': 'headless',
                 'maxDuration': 3600,
                 'idleTimeout': 1000,
                 'tags': tags
-            }``
+            }
         }).usingServer("https://ondemand.us-east-1.saucelabs.com/wd/hub")
             .build();
         await driver.getSession().then(function (sessionid) {
@@ -55,8 +54,9 @@ describe ('async/await tests', function() {
         await driver.findElement(By.className('btn_action')).click();
         const currentURL = await driver.getCurrentUrl();
         console.log('URL is:  ' + currentURL);
-        console.log(`SauceOnDemandSessionID=${driver.sessionID} job-name=js-async/await: login-test`)
+        console.log(`SauceOnDemandSessionID=${driver.sessionID} job-name=headless`)
 
         expect(currentURL).equals('https://www.saucedemo.com/inventory.html');
     });
 });
+``

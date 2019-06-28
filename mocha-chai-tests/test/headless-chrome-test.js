@@ -17,15 +17,14 @@ describe('headlesschrometest', function() {
     beforeEach(async function () {
         driver = await new webdriver.Builder().withCapabilities({
             'browserName': 'chrome',
-            'platformName': 'linux',
+            // 'platformName': 'linux',
             'browserVersion': 'latest',
             'goog:chromeOptions' : { 'w3c' : true },
             'sauce:options': {
                 'username': username,
                 'accessKey': accessKey,
-                'seleniumVersion': '3.141.59',
-                'build': 'Sample Headless Tests',
-                'name': 'headless-chrome-test-js',
+                'build': 'new',
+                'name': 'headlesschrome',
                 'maxDuration': 3600,
                 'idleTimeout': 1000,
                 'tags': tags
@@ -45,7 +44,7 @@ describe('headlesschrometest', function() {
         await driver.get(appURL);
         const title = await driver.getTitle();
         console.log('Page Title is: ' + title);
-        console.log(`SauceOnDemandSessionID=${driver.sessionID} job-name=headless-chrome-test-js`)
+        console.log(`SauceOnDemandSessionID=${driver.sessionID} job-name=headlesschrome`)
         expect(title).equals('Swag Labs');
     });
 });
