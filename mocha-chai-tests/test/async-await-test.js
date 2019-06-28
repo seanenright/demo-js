@@ -16,7 +16,7 @@ describe ('async/await tests', function() {
     beforeEach(async function () {
         driver = await new webdriver.Builder().withCapabilities({
             'browserName': 'chrome',
-            'platformName': 'Windows 10',
+            'platformName': 'linux',
             'browserVersion': 'latest',
             'goog:chromeOptions' : { 'w3c' : true },
             'sauce:options': {
@@ -28,7 +28,8 @@ describe ('async/await tests', function() {
                 'maxDuration': 3600,
                 'idleTimeout': 1000,
                 'tags': tags
-            }}).usingServer("https://ondemand.saucelabs.com/wd/hub")
+            }``
+        }).usingServer("https://ondemand.us-east-1.saucelabs.com/wd/hub")
             .build();
         await driver.getSession().then(function (sessionid) {
             driver.sessionID = sessionid.id_;
@@ -54,6 +55,8 @@ describe ('async/await tests', function() {
         await driver.findElement(By.className('btn_action')).click();
         const currentURL = await driver.getCurrentUrl();
         console.log('URL is:  ' + currentURL);
+        console.log(`SauceOnDemandSessionID=${driver.sessionID} job-name=js-async/await: login-test`)
+
         expect(currentURL).equals('https://www.saucedemo.com/inventory.html');
     });
 });

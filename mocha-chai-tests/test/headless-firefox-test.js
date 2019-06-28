@@ -12,7 +12,7 @@ let username = process.env.SAUCE_USERNAME,
     tags = ["sauceDemo", "async", "node", "webdriverjs", "headless" ],
     driver;
 
-describe ('headless firefox test', function() {
+describe ('headlessfirefoxtest', function() {
     this.timeout(50000);
     beforeEach(async function () {
         driver = await new webdriver.Builder().withCapabilities({
@@ -44,7 +44,7 @@ describe ('headless firefox test', function() {
         await driver.get(appURL);
         const title = await driver.getTitle();
         console.log('Page Title is: ' + title);
-        console.log(`SauceOnDemandSessionID=${driver.sessionID} job-name=headless firefox test`)
+        console.log(`SauceOnDemandSessionID=${driver.sessionID} job-name=headless-firefox-test-js`)
         expect(title).equals('Swag Labs');
     });
 });
